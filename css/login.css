@@ -90,7 +90,7 @@ section .container .user .formBx form input {
   font-weight: 300;
 }
 
-section .container .user .formBx form input[type='submit'] {
+section .container .user .formBx form input[type='btn'] {
   max-width: 100px;
   background: #677eff;
   color: #fff;
