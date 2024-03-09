@@ -3,61 +3,60 @@
 $jsonData = '[
     {
         "id": 1,
-        "name":" LD01 LOUNGE CHAIR",
+        "name":"HOOP MAX",
         "price": 200,
         "image": "img/prod/1.png",
-        "description": "Expertly rendered by Carl Hansen & Søn, the lounge chair—first introduced in 1951 and enduring ever since—is available in oak or as a combination of oak and walnut, sourced from sustainable forestry. Choose from seat and back upholstery in a selection of leather options or in a custom fabric."
+        "description": "expertly crafted by michael epstien, peak of basketball shoe design."
     },
     {
         "id": 2,
-        "name":" LD02 LOUNGE CHAIR",
+        "name":" LD02 Avenues",
         "price": 250,
         "image": "img/prod/2.png",
-        "description": "Expertly rendered by Carl Hansen & Søn, the lounge chair—first introduced in 1951 and enduring ever since—is available in oak or as a combination of oak and walnut, sourced from sustainable forestry. Choose from seat and back upholstery in a selection of leather options or in a custom fabric."
+        "description": "casual shoes"
     },
     {
         "id": 3,
-        "name":" LD03 LOUNGE CHAIR",
+        "name":" LD03 KAnye west edition",
         "price": 290,
         "image": "img/prod/3.png",
-        "description": "Expertly rendered by Carl Hansen & Søn, the lounge chair—first introduced in 1951 and enduring ever since—is available in oak or as a combination of oak and walnut, sourced from sustainable forestry. Choose from seat and back upholstery in a selection of leather options or in a custom fabric."
+        "description": "Customized by Kanye for ye."
     },
     {
         "id": 4,
-        "name":" LD04 LOUNGE CHAIR",
+        "name":" Street FLows",
         "price": 200,
         "image": "img/prod/4.png",
-        "description": "Expertly rendered by Carl Hansen & Søn, the lounge chair—first introduced in 1951 and enduring ever since—is available in oak or as a combination of oak and walnut, sourced from sustainable forestry. Choose from seat and back upholstery in a selection of leather options or in a custom fabric."
+        "description": "for casual wear"
     },
     {
         "id": 5,
-        "name":" LD05 LOUNGE CHAIR",
+        "name":" Trapp REDD",
         "price": 300,
         "image": "img/prod/5.png",
         "description": "Expertly rendered by Carl Hansen & Søn, the lounge chair—first introduced in 1951 and enduring ever since—is available in oak or as a combination of oak and walnut, sourced from sustainable forestry. Choose from seat and back upholstery in a selection of leather options or in a custom fabric."
     },
     {
         "id": 6,
-        "name":" LD06 LOUNGE CHAIR",
+        "name":" AstroSole",
         "price": 200,
         "image": "img/prod/6.png",
-        "description": "Expertly rendered by Carl Hansen & Søn, the lounge chair—first introduced in 1951 and enduring ever since—is available in oak or as a combination of oak and walnut, sourced from sustainable forestry. Choose from seat and back upholstery in a selection of leather options or in a custom fabric."
+        "description": "Designed inspired from Moon"
     },
     {
         "id": 7,
-        "name":" LD07 LOUNGE CHAIR",
+        "name":" LD07 Beetle",
         "price": 200,
         "image": "img/prod/7.png",
-        "description": "Expertly rendered by Carl Hansen & Søn, the lounge chair—first introduced in 1951 and enduring ever since—is available in oak or as a combination of oak and walnut, sourced from sustainable forestry. Choose from seat and back upholstery in a selection of leather options or in a custom fabric."
+        "description": "For rough use, Military Grade MAterials"
     },
     {
         "id": 8,
-        "name":" LD08 LOUNGE CHAIR",
+        "name":" OXFORD",
         "price": 200,
         "image": "img/prod/8.png",
-        "description": "Expertly rendered by Carl Hansen & Søn, the lounge chair—first introduced in 1951 and enduring ever since—is available in oak or as a combination of oak and walnut, sourced from sustainable forestry. Choose from seat and back upholstery in a selection of leather options or in a custom fabric."
+        "description": "For the elegant, stylish and subtle."
     }
-    
 ]';
 
 // Database connection parameters

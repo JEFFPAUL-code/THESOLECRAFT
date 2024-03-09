@@ -60,8 +60,8 @@
 
         detail.querySelector('.image img').src = thisProduct.image;
         detail.querySelector('.name').innerText = thisProduct.name;
-        detail.querySelector('.price').innerText = '$' + thisProduct.price;
-        detail.querySelector('.description').innerText = '$' + thisProduct.description;
+        detail.querySelector('.price').innerText = 'Rs' + thisProduct.price;
+        detail.querySelector('.description').innerText = '' + thisProduct.description;
 
 
         (products.filter(value => value.id != productId)).forEach(product => {
@@ -71,7 +71,7 @@
             newProduct.innerHTML = 
             `<img src="${product.image}" alt="">
             <h2>${product.name}</h2>
-            <div class="price">$${product.price}</div>`;
+            <div class="price">Rs${product.price}</div>`;
             listProduct.appendChild(newProduct);
         });
     }
