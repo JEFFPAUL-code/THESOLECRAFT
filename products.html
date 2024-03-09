@@ -3,45 +3,194 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="font-awesome/css/font-awesome.css">
-    <link rel="stylesheet" href="css/prodstyle.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+    <script src="./tailwind3.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <title>product page</title>
 </head>
 <body>
-    <div class="container">
-        <div class="title">PRODUCT LIST</div>
-        <div class="listProduct">
-
-        </div>
+    <!--side bar-->
+    <div class="sidebar fixed top-0 bottom-0 lg:left-0 p-2 w-[300px] overflow-y-auto text-center bg-gray-400">
+        <div class="text-gray-100 text-xl">
+            <div class="p-2.5 mt-1 flex items-center">
+                <i class="bi bi-app-indicator"></i>
+                <h1 class="font-bold text-gray-700 text-[15px] ml-3 ">Menu</h1>
+                <i class="bi bi-x"></i>
+            </div>
+    </div>
     </div>
 
+    <!-- side bar end-->
+    <!--product list--> 
+    <div class="bg-white">
+        <div class="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-4xl lg:px-8">
+          <h2 class="sr-only">Products</h2>
+      
+          <div class="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
+            <a href="#" class="group">
+              <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
+                <img src="https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-01.jpg" alt="Tall slender porcelain bottle with natural clay textured body and cork stopper." class="h-full w-full object-cover object-center group-hover:opacity-75">
+              </div>
+              <h3 class="mt-4 text-sm text-gray-700">Earthen Bottle</h3>
+              <p class="mt-1 text-lg font-medium text-gray-900">$48</p>
+            </a>
+            <a href="#" class="group">
+              <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
+                <img src="https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-02.jpg" alt="Olive drab green insulated bottle with flared screw lid and flat top." class="h-full w-full object-cover object-center group-hover:opacity-75">
+              </div>
+              <h3 class="mt-4 text-sm text-gray-700">Nomad Tumbler</h3>
+              <p class="mt-1 text-lg font-medium text-gray-900">$35</p>
+            </a>
+            <a href="#" class="group">
+              <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
+                <img src="https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-03.jpg" alt="Person using a pen to cross a task off a productivity paper card." class="h-full w-full object-cover object-center group-hover:opacity-75">
+              </div>
+              <h3 class="mt-4 text-sm text-gray-700">Focus Paper Refill</h3>
+              <p class="mt-1 text-lg font-medium text-gray-900">$89</p>
+            </a>
+            <a href="#" class="group">
+              <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
+                <img src="https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-04.jpg" alt="Hand holding black machined steel mechanical pencil with brass tip and top." class="h-full w-full object-cover object-center group-hover:opacity-75">
+              </div>
+              <h3 class="mt-4 text-sm text-gray-700">Machined Mechanical Pencil</h3>
+              <p class="mt-1 text-lg font-medium text-gray-900">$35</p>
+            </a>
+      
+            <!-- More products... -->
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white">
+        <div class="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-4xl lg:px-8">
+          <h2 class="sr-only">Products</h2>
+      
+          <div class="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
+            <a href="#" class="group">
+              <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
+                <img src="https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-01.jpg" alt="Tall slender porcelain bottle with natural clay textured body and cork stopper." class="h-full w-full object-cover object-center group-hover:opacity-75">
+              </div>
+              <h3 class="mt-4 text-sm text-gray-700">Earthen Bottle</h3>
+              <p class="mt-1 text-lg font-medium text-gray-900">$48</p>
+            </a>
+            <a href="#" class="group">
+              <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
+                <img src="https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-02.jpg" alt="Olive drab green insulated bottle with flared screw lid and flat top." class="h-full w-full object-cover object-center group-hover:opacity-75">
+              </div>
+              <h3 class="mt-4 text-sm text-gray-700">Nomad Tumbler</h3>
+              <p class="mt-1 text-lg font-medium text-gray-900">$35</p>
+            </a>
+            <a href="#" class="group">
+              <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
+                <img src="https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-03.jpg" alt="Person using a pen to cross a task off a productivity paper card." class="h-full w-full object-cover object-center group-hover:opacity-75">
+              </div>
+              <h3 class="mt-4 text-sm text-gray-700">Focus Paper Refill</h3>
+              <p class="mt-1 text-lg font-medium text-gray-900">$89</p>
+            </a>
+            <a href="#" class="group">
+              <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
+                <img src="https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-04.jpg" alt="Hand holding black machined steel mechanical pencil with brass tip and top." class="h-full w-full object-cover object-center group-hover:opacity-75">
+              </div>
+              <h3 class="mt-4 text-sm text-gray-700">Machined Mechanical Pencil</h3>
+              <p class="mt-1 text-lg font-medium text-gray-900">$35</p>
+            </a>
+      
+            <!-- More products... -->
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white">
+        <div class="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-4xl lg:px-8">
+          <h2 class="sr-only">Products</h2>
+      
+          <div class="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
+            <a href="#" class="group">
+              <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
+                <img src="https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-01.jpg" alt="Tall slender porcelain bottle with natural clay textured body and cork stopper." class="h-full w-full object-cover object-center group-hover:opacity-75">
+              </div>
+              <h3 class="mt-4 text-sm text-gray-700">Earthen Bottle</h3>
+              <p class="mt-1 text-lg font-medium text-gray-900">$48</p>
+            </a>
+            <a href="#" class="group">
+              <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
+                <img src="https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-02.jpg" alt="Olive drab green insulated bottle with flared screw lid and flat top." class="h-full w-full object-cover object-center group-hover:opacity-75">
+              </div>
+              <h3 class="mt-4 text-sm text-gray-700">Nomad Tumbler</h3>
+              <p class="mt-1 text-lg font-medium text-gray-900">$35</p>
+            </a>
+            <a href="#" class="group">
+              <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
+                <img src="https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-03.jpg" alt="Person using a pen to cross a task off a productivity paper card." class="h-full w-full object-cover object-center group-hover:opacity-75">
+              </div>
+              <h3 class="mt-4 text-sm text-gray-700">Focus Paper Refill</h3>
+              <p class="mt-1 text-lg font-medium text-gray-900">$89</p>
+            </a>
+            <a href="#" class="group">
+              <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
+                <img src="https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-04.jpg" alt="Hand holding black machined steel mechanical pencil with brass tip and top." class="h-full w-full object-cover object-center group-hover:opacity-75">
+              </div>
+              <h3 class="mt-4 text-sm text-gray-700">Machined Mechanical Pencil</h3>
+              <p class="mt-1 text-lg font-medium text-gray-900">$35</p>
+            </a>
+      
+            <!-- More products... -->
+          </div>
+        </div>
+      </div>
+      <div class="bg-white">
+        <div class="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-4xl lg:px-8">
+          <h2 class="sr-only">Products</h2>
+      
+          <div class="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
+            <a href="#" class="group">
+              <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
+                <img src="https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-01.jpg" alt="Tall slender porcelain bottle with natural clay textured body and cork stopper." class="h-full w-full object-cover object-center group-hover:opacity-75">
+              </div>
+              <h3 class="mt-4 text-sm text-gray-700">Earthen Bottle</h3>
+              <p class="mt-1 text-lg font-medium text-gray-900">$48</p>
+            </a>
+            <a href="#" class="group">
+              <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
+                <img src="https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-02.jpg" alt="Olive drab green insulated bottle with flared screw lid and flat top." class="h-full w-full object-cover object-center group-hover:opacity-75">
+              </div>
+              <h3 class="mt-4 text-sm text-gray-700">Nomad Tumbler</h3>
+              <p class="mt-1 text-lg font-medium text-gray-900">$35</p>
+            </a>
+            <a href="#" class="group">
+              <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
+                <img src="https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-03.jpg" alt="Person using a pen to cross a task off a productivity paper card." class="h-full w-full object-cover object-center group-hover:opacity-75">
+              </div>
+              <h3 class="mt-4 text-sm text-gray-700">Focus Paper Refill</h3>
+              <p class="mt-1 text-lg font-medium text-gray-900">$89</p>
+            </a>
+            <a href="#" class="group">
+              <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
+                <img src="https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-04.jpg" alt="Hand holding black machined steel mechanical pencil with brass tip and top." class="h-full w-full object-cover object-center group-hover:opacity-75">
+              </div>
+              <h3 class="mt-4 text-sm text-gray-700">Machined Mechanical Pencil</h3>
+              <p class="mt-1 text-lg font-medium text-gray-900">$35</p>
+            </a>
+      
+            <!-- More products... -->
+          </div>
+        </div>
+      </div>
+      <!-- product list end-->
+
+
+
     <script>
-        let products = null;
-        // get datas from file json
-        fetch('products.json')
-            .then(response => response.json())
-            .then(data => {
-                products = data;
-                addDataToHTML();
-        })
-
-        function addDataToHTML(){
-            let listProductHTML = document.querySelector('.listProduct');
-
-            // add new datas
-            if(products != null) {
-                products.forEach(product => {
-                    let newProduct = document.createElement('a');
-                    // Update link path
-                    newProduct.href = 'proddet.html?id=' + product.id;
-                    newProduct.classList.add('item');
-                    newProduct.innerHTML = 
-                    `<img src="${product.image}" alt="">
-                    <h2>${product.name}</h2>
-                    <div class="price">$${product.price}</div>`;
-                    listProductHTML.appendChild(newProduct);
-                });
-            }
+        const navLinks = document.querySelector('.nav-links')
+        function onToggleMenu(e){
+            e.name = e.name === 'menu' ? 'close' : 'menu'
+            navLinks.classList.toggle('top-[9%]')
         }
     </script>
 </body>
