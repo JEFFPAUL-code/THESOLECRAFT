@@ -1,8 +1,11 @@
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 $server = "localhost";
 $username = "root";
 $password = "";
-$dbname = "solecraft";
+$dbname = "shoe";
 
 $con = mysqli_connect($server, $username, $password, $dbname);
 
@@ -12,18 +15,29 @@ if (!$con) {
 
 $Name = $_POST['Name'];
 $Email = $_POST['Email'];
-$UserName = $_POST['Username'];
-$Phone_No = $_POST['Phone_No'];
 $Password = $_POST['Password'];
 
-$sql = "INSERT INTO `registration`(`Name`, `UserName`, `Email`, `Phone_No`, `Password`) 
-        VALUES ('$Name', '$UserName', '$Email', '$Phone_No', '$Password')";
+// Hash the password
+$hashedPassword = password_hash($Password, PASSWORD_DEFAULT);
 
-if (mysqli_query($con, $sql)) {
-    // Data submitted successfully, redirect to login.html using JavaScript
-    echo "<script>window.location.href = 'login.html';</script>";
+// Check if the email or name already exists in the database
+$check_query = "SELECT * FROM `users` WHERE `Name`='$Name' OR `Email`='$Email'";
+$check_result = mysqli_query($con, $check_query);
+
+if (mysqli_num_rows($check_result) > 0) {
+    // If a user with the same email or name already exists, display alert
+    echo "<script>alert('User with this email or name already exists. Please choose a different email or name.'); window.location.href = 'login.html';</script>";
 } else {
-    echo "Error: " . $sql . "<br>" . mysqli_error($con);
+    // If the user doesn't exist, proceed with registration
+    $sql = "INSERT INTO `users`(`Name`, `Email`, `password`) 
+            VALUES ('$Name', '$Email', '$hashedPassword')";
+
+    if (mysqli_query($con, $sql)) {
+        // Data submitted successfully, redirect to login.html using JavaScript
+        echo "<script>window.location.href = 'login.html';</script>";
+    } else {
+        echo "Error: " . $sql . "<br>" . mysqli_error($con);
+    }
 }
 
 mysqli_close($con);
