@@ -2,31 +2,84 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-$server = "localhost";
+// Start session
+session_start();
+
+// Establish database connection
+$server = "127.0.0.1:3307";
 $username = "root";
 $password = "";
-$dbname = "solecraft";
+$dbname = "shoe";
 
 $con = mysqli_connect($server, $username, $password, $dbname);
 
-if(!$con) {
+if (!$con) {
     die("Connection failed: " . mysqli_connect_error());
 }
 
-$UserName = $_POST['uname'];
-$Password = $_POST['psw'];
+// Check if the form is submitted
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Validate input fields
+    $Name = trim($_POST['uname']);
+    $Password = trim($_POST['psw']);
 
-$sql = "SELECT * FROM `registration` WHERE `UserName`='$UserName' AND `Password`='$Password'";
-
-$result = mysqli_query($con, $sql);
-
-if(mysqli_num_rows($result) > 0) {
-    // Username and password match, redirect to index.html
-    echo "<script>window.location.href = 'index.html';</script>";
-} else {
-    // Username and password don't match, display alert message
-    echo "<script>alert('Wrong Credentials'); window.location.href = 'login.html';</script>";
+    if (empty($Name) || empty($Password)) {
+        echo "<script>alert('Please enter both username and password');</script>";
+    } else {
+        // Prepare SQL statement
+        $sql = "SELECT * FROM users WHERE Name=?";
+        
+        // Prepare and bind parameters
+        if ($stmt = mysqli_prepare($con, $sql)) {
+            mysqli_stmt_bind_param($stmt, "s", $Name);
+            
+            // Execute the statement
+            mysqli_stmt_execute($stmt);
+            
+            // Store result
+            $result = mysqli_stmt_get_result($stmt);
+            
+            if (mysqli_num_rows($result) == 1) {
+                $row = mysqli_fetch_assoc($result);
+                if (password_verify($Password, $row['password'])) {
+                    // Correct credentials, proceed with login
+                    if ($row['isVerified'] == 1) {
+                        // Set session variables
+                        $_SESSION['loggedin'] = true;
+                        $_SESSION['username'] = $Name;
+                        $_SESSION['isAdmin'] = $row['isAdmin'];
+                        
+                        if ($row['isAdmin'] == 1) {
+                            // Admin is logged in, redirect to AdminDash.php
+                            header("Location: AdminDash.php");
+                            exit;
+                        } else {
+                            // Regular user is logged in, redirect to index.php
+                            header("Location: index.php");
+                            exit;
+                        }
+                    } else {
+                        // Account not verified, display alert message
+                        echo "<script>alert('Please verify your account.'); window.location.href = 'login.html';</script>";
+                    }
+                } else {
+                    // Password doesn't match, display alert message
+                    echo "<script>alert('Wrong Password'); window.location.href = 'login.html';</script>";
+                }
+            } else {
+                // Username not found, display alert message
+                echo "<script>alert('User not found'); window.location.href = 'login.html';</script>";
+            }
+            
+            // Close statement
+            mysqli_stmt_close($stmt);
+        } else {
+            // Error in preparing statement
+            echo "<script>alert('Error in preparing statement');</script>";
+        }
+    }
 }
 
+// Close connection
 mysqli_close($con);
 ?>
