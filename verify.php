@@ -46,7 +46,15 @@
         <div class="message">
             <?php
             // Database connection
-            $server = "127.0.0.1:3307"; // Your database server hostname
+            // Load dotenv library
+require __DIR__ . '/vendor/autoload.php';
+
+// Load .env file
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv->load();
+
+// Retrieve server name from .env
+$server = $_ENV['DB_SERVER'];
 $username = "root"; // Your database username
 $password = ""; // Your database password
 $dbname = "shoe"; // Your database name

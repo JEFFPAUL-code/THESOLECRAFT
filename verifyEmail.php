@@ -18,7 +18,9 @@ $mail->Password   = $_ENV['SMTP_PASSWORD'];     // SMTP account password
 $mail->SMTPSecure = 'tls';
 $mail->Port       = $_ENV['SMTP_PORT'];
 
-$server = "127.0.0.1:3307";
+
+// Retrieve server name from .env
+$server = $_ENV['DB_SERVER'];
 $username = "root";
 $password = "";
 $dbname = "shoe";

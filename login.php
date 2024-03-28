@@ -6,7 +6,15 @@ ini_set('display_errors', 1);
 session_start();
 
 // Establish database connection
-$server = "127.0.0.1:3307";
+// Load dotenv library
+require __DIR__ . '/vendor/autoload.php';
+
+// Load .env file
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv->load();
+
+// Retrieve server name from .env
+$server = $_ENV['DB_SERVER'];
 $username = "root";
 $password = "";
 $dbname = "shoe";
@@ -17,11 +25,6 @@ if (!$con) {
     die("Connection failed: " . mysqli_connect_error());
 }
 
-// Check if the form is submitted
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Validate input fields
-    $Name = trim($_POST['uname']);
-    $Password = trim($_POST['psw']);
 // Check if the form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Validate input fields

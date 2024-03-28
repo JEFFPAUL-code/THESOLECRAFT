@@ -1,6 +1,15 @@
 <?php
+// Load dotenv library
+require __DIR__ . '/vendor/autoload.php';
+
+// Load .env file
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv->load();
+
+// Retrieve server name from .env
+$servername = $_ENV['DB_SERVER'];
 // Connect to the database (replace with your database credentials)
-$servername = "127.0.0.1:3307";
+
 $username = "root";
 $password = "";
 $dbname = "shoe";
