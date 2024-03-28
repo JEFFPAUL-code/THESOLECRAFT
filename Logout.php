@@ -2,11 +2,10 @@
 // Start the session
 session_start();
 
-// Unset all of the session variables
-$_SESSION = array();
-
-// Destroy the session
-session_destroy();
+// Unset specific session variables related to user authentication
+unset($_SESSION['loggedin']);
+unset($_SESSION['username']);
+unset($_SESSION['isAdmin']);
 
 // Redirect to the index page
 header("Location: index.php");
