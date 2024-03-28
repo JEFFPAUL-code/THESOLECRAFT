@@ -22,6 +22,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Validate input fields
     $Name = trim($_POST['uname']);
     $Password = trim($_POST['psw']);
+// Check if the form is submitted
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Validate input fields
+    $Name = trim($_POST['uname']);
+    $Password = trim($_POST['psw']);
 
     if (empty($Name) || empty($Password)) {
         echo "<script>alert('Please enter both username and password');</script>";
