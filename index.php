@@ -1,4 +1,5 @@
 <?php
+session_start();
 // Load dotenv library
 require 'vendor/autoload.php';
 
@@ -43,7 +44,24 @@ if (!$conn) {
             <div class="icons">
                 <a href="#"><i class="fa fa-heart"></i></a>
                 <a href="#"><img src="img/cart.svg" style="width: 40.41px; height: 24px;"></a>
-                <a href="login.html"><img src="img/user.svg" style="width: 40.41px; height: 24px;"></a>
+                <?php
+    // Check if the user is logged in
+    if (isset($_SESSION['loggedin'])) {
+        // If logged in, display the dropdown menu
+        echo '<div class="dropdown">';
+        echo '<button class="dropbtn" onclick="toggleDropdown()">';
+        echo '<img src="img/user.svg" style="width: 40.41px; height: 24px;">';
+        echo '</button>';
+        echo '<div class="dropdown-content" id="dropdownContent">';
+        echo '<a href="#">Profile</a>';
+        echo '<a href="logout.php">Logout</a>';
+        echo '</div>';
+        echo '</div>';
+    } else {
+        // If not logged in, display the login button
+        echo '<a href="login.html"><img src="img/user.svg" style="width: 40.41px; height: 24px;"></a>';
+    }
+    ?>
             </div>
         </header>
         <!--end header-->
@@ -312,4 +330,5 @@ $server = $_ENV['DB_SERVER'];
 </html>
 
 <script src="js/script.js"></script>
+
 

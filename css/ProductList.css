@@ -1,0 +1,293 @@
+/* variables */
+:root {
+  --clr-primary: #7380ec;
+  --clr-danger: #ff7782;
+  --clr-success: #41f1b6;
+  --clr-white: #fff;
+  --clr-info-dark: #7d8da1;
+  --clr-info-light: #dce1eb;
+  --clr-dark: #363949;
+  --clr-warnig: #ff4edc;
+  --clr-light: rgba(132, 139, 200, 0.18);
+  --clr-primary-variant: #111e88;
+  --clr-dark-variant: #677483;
+  --clr-color-background: #f6f6f9;
+
+  --card-border-radius: 2rem;
+  --border-radius-1: 0.4rem;
+  --border-radius-2: 0.8rem;
+  --border-radius-3: 1.2rem;
+
+  --card-padding: 1.8rem;
+  --padding-1: 1.2rem;
+  --box-shadow: 0 2rem 3rem var(--clr-light);
+}
+header * {
+  font-family: iran_sans_light;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+  border: none;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: all .2s linear;
+}
+
+header {
+  font-size: 60%;
+  scroll-padding-top: 6rem;
+  scroll-behavior: smooth;
+}
+
+header{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: #fff;
+  padding: 1rem 9%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .1);
+}
+header .logo{
+  font-size: 1.5rem;
+  color: #000;
+  font-weight: 500;
+}
+header .navbar a{
+  font-size: 1rem;
+  color: #000;
+  margin: 0 2rem;
+}
+header .navbar a:hover{
+  color: orangered;
+}
+header .icons a{
+  font-size: 2rem;
+  color: #000;
+  margin-left: 1.5rem;
+}
+header .icons a:hover{
+  color: orangered;
+}
+#menu-bar{
+  font-size: 2rem;
+  padding: .5rem 1rem;
+  border: .1rem solid #000;
+  color: #000;
+  border-radius: .3rem;
+  cursor: pointer;
+  display: none;
+}
+
+
+body {
+  width: 100vw;
+  height: 100vh;
+  font-size: .7rem;
+  user-select: none;
+  overflow-x: hidden;
+  background: var(--clr-color-background);
+  font-family: 'Poppins', sans-serif;
+}
+
+.container {
+  display: grid;
+  width: 96%;
+  gap: 1.8rem;
+  grid-template-columns: auto; /* Adjusted for single column layout */
+  margin: 0 auto;
+}
+
+a {
+  color: var(--clr-dark);
+}
+
+h1 {
+  font-weight: 800;
+  font-size: 2.8rem;
+}
+
+h2 {
+  font-size: 1.4rem;
+}
+
+h3 {
+  font-size: 0.87rem;
+}
+
+h4 {
+  font-weight: 0.8rem;
+}
+
+h5 {
+  font-size: 0.77rem;
+}
+
+small {
+  font-size: 0.75rem;
+}
+
+.profile-photo img {
+  width: 2.8rem;
+  height: 2.8rem;
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+.text-muted {
+  color: var(--clr-info-dark);
+}
+
+p {
+  color: var(--clr-dark-variant);
+}
+
+b {
+  color: var(--clr-dark);
+}
+
+.primary {
+  color: var(--clr-primary);
+}
+
+.success {
+  color: var(--clr-success);
+}
+
+.danger {
+  color: var(--clr-dark);
+}
+
+.warning {
+  color: var(--clr-warnig);
+}
+
+/* Main content area */
+main {
+padding-top: 8rem; /* Adjust the value as needed */
+}
+.filter-buttons {
+display: flex;
+position: fixed;
+top: 4.2rem; /* Adjust the top position to align with the navbar */
+width: 100%; /* Adjusted for full width */
+background-color: white;
+padding: 1rem;
+box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+align-items: center; /* Center vertically */
+justify-content: center; /* Center the buttons horizontally */
+border-bottom: 1px solid #ccc; /* Add a border to visually separate from the navbar */
+}
+
+.filter-button {
+margin: 0 1rem; /* Adjust the margin between buttons */
+margin-left: 20px; /* Adjust the margin to move the buttons sideways */
+background-color: transparent; /* Set the background color to transparent */
+border: none; /* Remove the border */
+padding: 0; /* Remove padding */
+text-decoration: none; /* Remove default text decoration */
+cursor: pointer; /* Change cursor to pointer on hover */
+font-size: 1.4rem;
+font-family: 'Poppins', sans-serif;
+}
+.filter-button:hover {
+text-decoration: underline; /* Add underline on hover */
+color: orangered;
+}
+.container {
+  margin-left: 0; /* Adjust to remove left margin */
+}
+main .insights{
+display: grid;
+grid-template-columns: repeat(4,1fr);
+margin-left: 5rem;
+gap: 1.6rem;
+}
+main .insights>div{
+background-color: var(--clr-white);
+padding: var(--card-padding);
+border-radius: var(--card-border-radius);
+margin-top: 1rem;
+box-shadow: var(--box-shadow);
+transition: all .3s ease;
+margin-bottom: 20px;
+}
+
+main .insights > div:hover{
+box-shadow: none;
+}
+main .insights>div  span{
+background: coral;
+ padding: 0.5rem;
+  border-radius: 50%;
+  color: var(--clr-white);
+  font-size: 2rem; 
+}
+
+main .insights > div.expenses span{
+background: var(--clr-danger);
+}
+main .insights > div.income span{
+background: var(--clr-success);
+}
+
+main .insights > div .middle{
+display: flex;
+align-items: center;
+justify-content: space-between;
+}
+main .insights > div .middle h1{
+font-size: 1.6rem;
+}
+
+main h1{
+color: var(--clr-dark);
+}
+main .insights h1{
+color: var(--clr-dark);
+}
+main .insights h3{
+color: var(--clr-dark);
+}
+main .insights p{
+color: var(--clr-dark);
+}
+main .insights h3{
+
+ color: var(--clr-dark);
+
+}
+
+.product-box {
+
+}
+
+.Price{
+font-size: 0.8rem;
+}
+
+.product-box .Description {
+font-size: 1rem;
+overflow: hidden; /* Hide overflowing content */
+white-space: nowrap; /* Prevent text wrapping */
+text-overflow: ellipsis; /* Add ellipsis (...) when text overflows */
+max-width: 10rem; /* Limit the width to prevent horizontal overflow */
+}
+
+
+.Name{
+font-size: 1.75rem;
+}
+
+.Add{
+  background-color: transparent; /* Set the background color to transparent */
+border: none; /* Remove the border */
+padding: 0; /* Remove padding */
+text-decoration: none; /* Remove default text decoration */
+cursor: pointer;
+}

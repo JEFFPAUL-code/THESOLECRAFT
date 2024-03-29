@@ -59,7 +59,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         
                         if ($row['isAdmin'] == 1) {
                             // Admin is logged in, redirect to AdminDash.php
-                            header("Location: AdminDash.php");
+                            header("Location: Admin.php");
                             exit;
                         } else {
                             // Regular user is logged in, redirect to index.php
