@@ -5,6 +5,8 @@ require 'vendor/autoload.php';
 // Load .env file
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
 $dotenv->load();
+$apiKey = $_ENV['API_KEY'];
+
 
 // Retrieve server name from .env
 $server = $_ENV['DB_SERVER'];
@@ -18,6 +20,7 @@ if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
 ?>
+
 <html>
     <head><!--Bruh-->
         <title>SoleCraft</title>
