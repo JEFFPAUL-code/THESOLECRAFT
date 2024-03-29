@@ -22,6 +22,7 @@ if (!$conn) {
 }
 ?>
 
+
 <html>
     <head><!--Bruh-->
         <title>SoleCraft</title>
@@ -62,6 +63,7 @@ if (!$conn) {
         echo '<a href="login.html"><img src="img/user.svg" style="width: 40.41px; height: 24px;"></a>';
     }
     ?>
+    
             </div>
         </header>
         <!--end header-->
@@ -252,7 +254,7 @@ $server = $_ENV['DB_SERVER'];
                 echo "0 results";
             }
             $conn->close();
-            ?>
+            ?> 
             </div>
         </section>
         <!--end featured-->
