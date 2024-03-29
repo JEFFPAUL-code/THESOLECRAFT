@@ -43,7 +43,7 @@ if (!$conn) {
          </div>
          <!-- end top -->
           <div class="sidebar">
-            <a href="AdminDash.php">
+            <a href="Admin.php">
               <span class="material-symbols-sharp">grid_view </span>
               <h3>Dashboard</h3>
            </a>
