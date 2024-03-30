@@ -1,4 +1,19 @@
 /* variables */
+@font-face {
+  font-family: 'iran_sans_bold';
+  src: url('../Fonts/iran_sans_bold.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'iran_sans_light';
+  src: url('../Fonts/iran_sans_light.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'iran_sans_medi';
+  src: url('../Fonts/iran_sans_medi.woff') format('woff');
+}
+
 :root {
   --clr-primary: #7380ec;
   --clr-danger: #ff7782;
@@ -172,16 +187,17 @@ main {
 padding-top: 8rem; /* Adjust the value as needed */
 }
 .filter-buttons {
-display: flex;
-position: fixed;
-top: 4.2rem; /* Adjust the top position to align with the navbar */
-width: 100%; /* Adjusted for full width */
-background-color: white;
-padding: 1rem;
-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-align-items: center; /* Center vertically */
-justify-content: center; /* Center the buttons horizontally */
-border-bottom: 1px solid #ccc; /* Add a border to visually separate from the navbar */
+  display: flex;
+  position: fixed;
+  top: 4.2rem; /* Adjusted top position */
+  width: 100%;
+  background-color: white;
+  padding: 1.2rem; /* Increased padding */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid #ccc;/* Add a border to visually separate from the navbar */
+  z-index: 999; /* Ensure filter buttons appear above product cards */
 }
 
 .filter-button {
@@ -263,9 +279,109 @@ main .insights h3{
 
 }
 
-.product-box {
-
+.product-link {
+  text-decoration: none; /* Remove underline */
+  color: inherit; /* Use the default color */
 }
+
+main .prodarray > div.expenses span{
+  background: var(--clr-danger);
+  }
+  main .prodarray > div.income span{
+  background: var(--clr-success);
+  }
+  
+  main .prodarray > div .middle{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  }
+  main .prodarray > div .middle h1{
+  font-size: 1.6rem;
+  }
+  
+  main h1{
+  color: var(--clr-dark);
+  }
+  main .prodarray h1{
+  color: var(--clr-dark);
+  }
+  main .prodarray h3{
+  color: var(--clr-dark);
+  }
+  main .prodarray p{
+  color: var(--clr-dark);
+  }
+  main .prodarray h3{
+  
+   color: var(--clr-dark);
+  
+  }
+
+  main .prodarray {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+  main .prodarray > div {
+    flex-basis: calc(25% - 20px); /* 25% width for each product with some space between */
+    margin-bottom: 20px; /* Space between rows */
+  }
+
+.product-box {
+  
+  background-color: rgb(239, 240, 240);
+  border-radius: 10px;
+  border: 1px solid rgb(236, 236, 236);  
+  padding: 38px;  
+  filter: drop-shadow(0 30px 10px rgb(255, 255, 255));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content:center;
+  text-align: center; /* Adjust the value to make the corners rounder */
+}
+
+.product-box:hover {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Add drop shadow on hover */
+  transition: box-shadow 0.3s ease; /* Add smooth transition effect */
+}
+
+/* add to cart button */
+
+.a2c {
+  
+  .a2c {
+    border: none;
+    width: 120px; /* Increased width */
+    height: 70px; /* Increased height */
+    padding: 25px 60px; /* Adjusted padding */
+    border-radius: 10px;
+    font-size: 0.9rem; /* Adjusted font size */
+    letter-spacing: 2px;
+    cursor: pointer;
+  }
+  }
+
+.a2c + .btn {
+  margin-left: 10px;
+}
+
+.a2c button {
+   /* Make button background transparent */
+  border: none; /* Remove button border */
+  cursor: pointer; /* Change cursor to pointer on hover */
+  transition: background-color 0.3s ease;
+  border-radius: 10px; /* Smooth transition effect */
+}
+
+.a2c button:hover {
+  background-color: rgb(255, 69, 0); /* Add fill effect on hover */
+}
+  
+  
+
 
 .Price{
 font-size: 0.8rem;
