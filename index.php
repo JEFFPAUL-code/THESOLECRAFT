@@ -219,7 +219,7 @@ $server = $_ENV['DB_SERVER'];
             }
 
             // Fetch the latest 3 products from the database based on product ID
-            $sql = "SELECT * FROM products ORDER BY id DESC LIMIT 3"; // Assuming 'products' is your table name and 'id' is the product ID column
+            $sql = "SELECT * FROM products ORDER BY pid DESC LIMIT 3"; // Assuming 'products' is your table name and 'id' is the product ID column
             $result = $conn->query($sql);
 
             if ($result->num_rows > 0) {

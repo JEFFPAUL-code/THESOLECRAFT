@@ -86,7 +86,7 @@ if (!$conn) {
         while ($row = mysqli_fetch_assoc($result)) {
             ?>
             <div>
-                <a href="product_details.php?id=<?php echo $row['id']; ?>">
+                <a href="product_details.php?pid=<?php echo $row['pid']; ?>">
                     <div class="sales">
                         <!-- Product details -->
                         <div class="product-box">

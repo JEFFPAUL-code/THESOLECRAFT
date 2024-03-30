@@ -72,6 +72,10 @@ if (!$conn) {
               <span class="material-symbols-sharp">settings </span>
               <h3>settings</h3>
            </a>
+           <a href="#">
+              <span class="material-symbols-sharp">add </span>
+              <h3>Admin Access</h3>
+           </a>
           
            <a href="Logout.php">
               <span class="material-symbols-sharp">logout </span>

@@ -1,4 +1,5 @@
 <?php
+session_start();
 // Load dotenv library
 require __DIR__ . '/vendor/autoload.php';
 
