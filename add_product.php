@@ -1,4 +1,6 @@
 <?php
+// Include database connection code
+session_start();
 // Load dotenv library
 require __DIR__ . '/vendor/autoload.php';
 
@@ -7,36 +9,45 @@ $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
 $dotenv->load();
 
 // Retrieve server name from .env
-$servername = $_ENV['DB_SERVER'];
-// Connect to the database (replace with your database credentials)
-
-$username = "root";
-$password = "";
+$server = $_ENV['DB_SERVER'];
+$username = "root"; // Replace with your database username
+$password = ""; // Replace with your database password
 $dbname = "shoe";
 
-$conn = new mysqli($servername, $username, $password, $dbname);
+$conn = mysqli_connect($server, $username, $password, $dbname);
 
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
 }
 
-// Get form data
-$name = $_POST['name'];
-$description = $_POST['description'];
-$price = $_POST['price'];
-$image_url = $_POST['image_url'];
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Process form data
+    $productName = mysqli_real_escape_string($conn, $_POST['name']);
+    $productDescription = mysqli_real_escape_string($conn, $_POST['description']);
+    $productPrice = $_POST['price'];
+    $productImageURL = mysqli_real_escape_string($conn, $_POST['image_url']);
 
-// Insert data into the database
-$sql = "INSERT INTO products (name, description, price, image_url) VALUES ('$name', '$description', $price, '$image_url')";
+    // Insert product into products table
+    $sql = "INSERT INTO products (name, description, price, image_url) VALUES ('$productName', '$productDescription', '$productPrice', '$productImageURL')";
+    
+    if (mysqli_query($conn, $sql)) {
+        $productId = mysqli_insert_id($conn); // Get the last inserted ID
+        
+        // Insert variants into product_variants table
+        foreach ($_POST['color'] as $key => $color) {
+            $size = mysqli_real_escape_string($conn, $_POST['size'][$key]);
+            $quantity = $_POST['quantity'][$key];
+            $variantURL = mysqli_real_escape_string($conn, $_POST['variant_url'][$key]);
 
-if ($conn->query($sql) === TRUE) {
-    echo "New product added successfully";
-    // Refresh the page after 1 second (1000 milliseconds)
-    echo "<script>window.location.href = 'AdminProd.php';</script>";
-} else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
+            $sql = "INSERT INTO product_variants (product_id, color, size, quantity, variant_url) VALUES ('$productId', '$color', '$size', '$quantity', '$variantURL')";
+            mysqli_query($conn, $sql);
+        }
+
+        // Show alert and redirect
+        echo '<script>alert("Product and variants added successfully."); window.location.href = "AdminProd.php";</script>';
+        exit;
+    } else {
+        echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+    }
 }
-
-$conn->close();
 ?>

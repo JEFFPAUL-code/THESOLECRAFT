@@ -1,4 +1,5 @@
 <?php
+// Include database connection code
 session_start();
 // Load dotenv library
 require __DIR__ . '/vendor/autoload.php';
@@ -9,8 +10,8 @@ $dotenv->load();
 
 // Retrieve server name from .env
 $server = $_ENV['DB_SERVER'];
-$username = "root";
-$password = "";
+$username = "root"; // Replace with your database username
+$password = ""; // Replace with your database password
 $dbname = "shoe";
 
 $conn = mysqli_connect($server, $username, $password, $dbname);
@@ -19,42 +20,31 @@ if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
 
-if ($_SERVER["REQUEST_METHOD"] == "GET") {
-    // Retrieve product ID from the URL
-    if(isset($_GET['pid'])) {
-        $productId = $_GET['pid'];
-        
-        // Fetch product details from the database
-        $sql = "SELECT * FROM products WHERE pid = $productId";
-        $result = mysqli_query($conn, $sql);
-        
-        if(mysqli_num_rows($result) == 1) {
-            $row = mysqli_fetch_assoc($result);
-            $productName = $row['name'];
-            $productDescription = $row['description'];
-            $productPrice = $row['price'];
-            $productImageURL = $row['image_url'];
-        } else {
-            // Product not found
-            echo "<script>alert('Product not found');</script>";
-            echo "<script>window.location.href = 'AdminProd.php';</script>";
-        }
-    } else {
-        // Invalid URL
-        echo "<script>alert('Invalid URL');</script>";
-        echo "<script>window.location.href = 'AdminProd.php';</script>";
-    }
+// Check if variant_id is provided
+if (!isset($_GET['variant_id']) || empty($_GET['variant_id'])) {
+    die("Variant ID not provided.");
 }
+
+$variantId = $_GET['variant_id'];
+
+// Fetch variant details from the database
+$sql = "SELECT * FROM product_variants WHERE variant_id = '$variantId'";
+$result = mysqli_query($conn, $sql);
+if (!$result || mysqli_num_rows($result) == 0) {
+    die("Variant not found.");
+}
+
+$row = mysqli_fetch_assoc($result);
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Update Product</title>
-    <link rel="stylesheet" href="css/AdminProd.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@48,400,0,0" />
+  <link rel="stylesheet" href="css/AdminProd.css">
+    <title>Update Variant</title>
 </head>
 <body>
 <header>
@@ -104,20 +94,20 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
             </a>
           </div>
       </aside>
-    <div class="container">
-        <h2>Update Product</h2>
-        <form action="update_product_process.php" method="post">
-            <input type="hidden" name="pid" value="<?php echo $productId; ?>">
-            <label for="name">Product Name:</label>
-            <input type="text" id="name" name="name" value="<?php echo $productName; ?>" required><br><br>
-            <label for="description">Product Description:</label>
-            <textarea id="description" name="description" required><?php echo $productDescription; ?></textarea><br><br>
-            <label for="price">Product Price:</label>
-            <input type="number" id="price" name="price" value="<?php echo $productPrice; ?>" step="0.01" required><br><br>
-            <label for="image_url">Image URL:</label>
-            <input type="text" id="image_url" name="image_url" value="<?php echo $productImageURL; ?>"><br><br>
-            <button type="submit">Update Product</button>
-        </form>
-    </div>
+    <h1>Update Variant</h1>
+
+    <form action="update_variant_process.php" method="POST">
+        <input type="hidden" name="variant_id" value="<?php echo $variantId; ?>">
+        <label for="color">Color:</label>
+        <input type="text" id="color" name="color" value="<?php echo $row['color']; ?>" required><br><br>
+        <label for="size">Size:</label>
+        <input type="text" id="size" name="size" value="<?php echo $row['size']; ?>" required><br><br>
+        <label for="quantity">Quantity:</label>
+        <input type="number" id="quantity" name="quantity" value="<?php echo $row['quantity']; ?>" required><br><br>
+        <!-- Add input for variant URL -->
+        <label for="variant_url">Variant URL:</label>
+        <input type="text" id="variant_url" name="variant_url" value="<?php echo $row['variant_url']; ?>" required><br><br>
+        <button type="submit">Update Variant</button>
+    </form>
 </body>
 </html>
