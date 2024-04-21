@@ -68,6 +68,10 @@ if (!$conn) {
                 <span class="material-symbols-sharp">settings </span>
                 <h3>settings</h3>
              </a>
+             
+            <a href="Logout.php">
+              <span class="material-symbols-sharp">logout </span>
+              <h3>Logout</h3>
             
              <a href="Logout.php">
                 <span class="material-symbols-sharp">logout </span>

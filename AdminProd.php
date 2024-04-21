@@ -100,6 +100,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
               <span class="material-symbols-sharp">add </span>
               <h3>Admin Access</h3>
             </a>
+              
+            <a href="Logout.php">
+              <span class="material-symbols-sharp">logout </span>
+              <h3>Logout</h3>
+            
             <a href="Logout.php">
               <span class="material-symbols-sharp">logout </span>
               <h3>Logout</h3>

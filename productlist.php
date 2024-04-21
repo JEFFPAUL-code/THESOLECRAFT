@@ -1,13 +1,9 @@
 <?php
 session_start();
-// Load dotenv library
 require __DIR__ . '/vendor/autoload.php';
-
-// Load .env file
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
 $dotenv->load();
 
-// Retrieve server name from .env
 $server = $_ENV['DB_SERVER'];
 $username = "root";
 $password = "";
@@ -18,7 +14,30 @@ $conn = mysqli_connect($server, $username, $password, $dbname);
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
+
+if(isset($_POST['add_to_cart'])) {
+    if(isset($_SESSION['loggedin']) && isset($_SESSION['user_id'])) {
+        $product_id = $_POST['product_id'];
+        $user_id = $_SESSION['user_id'];
+        
+        $sql = "INSERT INTO cart (user_id, product_id) VALUES (?, ?)";
+        $stmt = mysqli_prepare($conn, $sql);
+        
+        mysqli_stmt_bind_param($stmt, "ii", $user_id, $product_id);
+        
+        if(mysqli_stmt_execute($stmt)) {
+            echo "Product added to cart successfully.";
+        } else {
+            echo "Error: " . mysqli_error($conn);
+        }
+        mysqli_stmt_close($stmt);
+    } else {
+        echo "Please login to add products to cart.";
+    }
+}
 ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -43,9 +62,7 @@ if (!$conn) {
             <a href="#Pedro.ai">Pedro.Ai</a>
         </nav>
         <?php
-    // Check if the user is logged in
     if (isset($_SESSION['loggedin'])) {
-        // If logged in, display the dropdown menu
         echo '<div class="dropdown"><button class="dropbtn" onclick="toggleDropdown()"><div class="icons"><a href="login.html"><i class="fa fa-user"></i></a>
         </div></button>';
         echo '<div class="dropdown-content" id="dropdownContent">';
@@ -54,62 +71,50 @@ if (!$conn) {
         echo '</div>';
         echo '</div>';
     } else {
-        // If not logged in, display the login button
         echo '<div class="icons"><a href="login.html"><i class="fa fa-user"></i></a>
         </div>';
     }
     ?>
+    <div class="icons"><a href ="#"><i class="fa fa-cart-plus" aria-hidden="true"></i></a></div>
     </header>
     
-    
-
     <div class="container">
-        <!-- Your main content goes here -->
-        
         <main>
-        <div class="filter-buttons">
-    <button class="filter-button">Men</button>
-    <button class="filter-button">Women</button>
-    <button class="filter-button">Kids</button>
-</div>
+            <div class="filter-buttons">
+                <button class="filter-button">Men</button>
+                <button class="filter-button">Women</button>
+                <button class="filter-button">Kids</button>
+            </div>
 
             <div class="insights">
-            
-    <?php
-    // Fetch products from the database
-    $sql = "SELECT * FROM products";
-    $result = mysqli_query($conn, $sql);
+                <?php
+                $sql = "SELECT * FROM products";
+                $result = mysqli_query($conn, $sql);
 
-    // Check if there are any products
-    if (mysqli_num_rows($result) > 0) {
-        // Loop through each product
-        while ($row = mysqli_fetch_assoc($result)) {
-            ?>
-            <div>
-                <a href="product_details.php?pid=<?php echo $row['pid']; ?>">
-                    <div class="sales">
-                        <!-- Product details -->
-                        <div class="product-box">
-                            <img src="<?php echo $row['image_url']; ?>" alt="<?php echo $row['name']; ?>">
-                            <p class="Name"><?php echo $row['name']; ?></p>
-                            <p class="Description"> <?php echo $row['description']; ?></p>
-                            <p class="Price">Price: &#x20B9;<?php echo $row['price']; ?></p></a>
-                            <div><button class="Add">Add To Cart</button></div>
-                            <!-- Add more product details here as needed -->
+                if (mysqli_num_rows($result) > 0) {
+                    while ($row = mysqli_fetch_assoc($result)) {
+                ?>
+                        <div>
+                            <form method="post" action="">
+                                <input type="hidden" name="product_id" value="<?php echo $row['pid']; ?>">
+                                <div class="sales">
+                                    <div class="product-box">
+                                        <img src="<?php echo $row['image_url']; ?>" alt="<?php echo $row['name']; ?>">
+                                        <p class="Name"><?php echo $row['name']; ?></p>
+                                        <p class="Description"><?php echo $row['description']; ?></p>
+                                        <p class="Price">Price: &#x20B9;<?php echo $row['price']; ?></p>
+                                        <button type="submit" class="Add" name="add_to_cart">Add To Cart</button>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
-        </div>
+                <?php
+                    }
+                } else {
+                    echo "No products found";
+                }
+                ?>
             </div>
-            <?php
-        }
-    } else {
-        // If no products found
-        echo "No products found";
-    }
-    ?>
-</div>
-            </div>
-            <!-- End insights -->
-            
         </main>
     </div>
 </body>
