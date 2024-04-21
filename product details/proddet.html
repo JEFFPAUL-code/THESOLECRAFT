@@ -28,15 +28,17 @@
         <h4> <small>$</small>999.99 </h4>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
         <h5>Color-Rose Gold</h5>
-        <div class="color flex1">
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
+        <div class="color-selector-container">
+            <label class="color-label">Select Color:</label>
+            <div class="color-options">
+              <button class="color-option" style="background-color: #ff0000;"></button>
+              <button class="color-option" style="background-color: #00ff00;"></button>
+              <button class="color-option" style="background-color: #0000ff;"></button>
+              <button class="color-option" style="background-color: #ffff00;"></button>
+              <button class="color-option" style="background-color: #00ffff;"></button>
+            </div>
+          </div>
+          
         <h5>Quantity</h5>
         <div class="quantity-decider">
             <button class="decrease">-</button>
@@ -48,7 +50,23 @@
             <button class="add-to-cart">Add to Cart</button>
             <button class="customize">Customize</button>
           </div>
-
+        <!-- size select-->
+        <div class="size-selector-container">
+            <label class="size-label">Select Size:</label>
+            <select class="size-select">
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              <option value="11">11</option>
+              <option value="12">12</option>
+            </select>
+            
+          </div>
+          
+          
+        <!--size end-->
       </div>
     </div>
   </section>
@@ -72,6 +90,33 @@
     quantitySpan.textContent = quantity;
   });
 });
+
+// size script 
+document.getElementById('select-btn').addEventListener('click', function() {
+  var selectedSize = document.getElementById('size').value;
+  alert('You selected size ' + selectedSize);
+});
+// end of size sscript
+
+//colour selector 
+// Get all color option buttons
+const colorButtons = document.querySelectorAll('.color-option');
+
+// Function to handle color selection
+function handleColorSelection(event) {
+  // Get the selected color
+  const selectedColor = event.target.style.backgroundColor;
+  
+  // Apply the selected color to the desired element or perform any other action
+  // For demonstration, we'll change the background color of the container
+  document.querySelector('.container').style.backgroundColor = selectedColor;
+}
+
+// Add click event listener to each color option button
+colorButtons.forEach(button => {
+  button.addEventListener('click', handleColorSelection);
+});
+// end of color selector
     let products = null;
         // get datas from file json
         fetch('products.json')

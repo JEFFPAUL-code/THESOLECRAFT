@@ -1,6 +1,4 @@
-* 
-  
-  body {
+body {
     font-family: sans-serif;
     background: #ffffff;
   }
@@ -22,10 +20,7 @@
   .flex {
     display: flex;
     justify-content: space-between;
-  }
-  
-  .flex1 {
-    display: flex;
+    align-items: flex-start; /* Align items at the start of the flex container */
   }
   
   .main_image {
@@ -68,7 +63,7 @@
     font-size: 15px;
   }
   
-  label,
+  .label,
   .add span,
   .color span {
     width: 25px;
@@ -113,30 +108,43 @@
     line-height: 0;
   }
   
-  button {
-    width: 100%;
-    padding: 10px;
-    border: none;
-    outline: none;
-    background: #ff3019;
-    color: white;
-    margin-top: 20%;
-    border-radius: 30px;
+ /* Size Selector */
+.size-selector-container {
+    display: flex;
+    align-items: center;
+    margin: 20px;
   }
   
+  .size-label {
+    margin-right: 10px;
+  }
+  
+  .size-select {
+    padding: 5px;
+  }
+  
+  .size-button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .size-button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Media Queries */
   @media only screen and (max-width:768px) {
     .container {
       max-width: 90%;
       margin: auto;
       height: auto;
+      flex-direction: column;
     }
-  
     .left, .right {
       width: 100%;
-    }
-  
-    .container {
-      flex-direction: column;
     }
   }
   
@@ -146,24 +154,22 @@
       height: auto;
       padding: 10px;
     }
-  
     .left, .right {
       padding: 0;
     }
-  
     img {
       width: 100%;
       height: 100%;
     }
-  
     .option {
       display: flex;
       flex-wrap: wrap;
     }
   }
+  
+  
 
-  /* quanitity button */
-/* quanitity button */
+/* Quantity button */
 .quantity-decider {
     display: flex;
     align-items: center;
@@ -176,7 +182,8 @@
     margin: 0 10px;
   }
   
-  button {
+  /* Add the quantity button styles to the existing button styles */
+  .quantity button {
     background-color: transparent;
     border: 2px solid orange;
     color: orange;
@@ -190,23 +197,25 @@
     transition: background-color 0.3s, color 0.3s;
   }
   
-  button:hover {
+  .quantity button:hover {
     background-color: orange;
     color: white;
   }
   
+  /* Buttons container */
   .buttons {
     display: flex;
     align-items: center;
     justify-content: center; /* Center the buttons horizontally */
     margin-top: 20px; /* Increase spacing between buttons and other content */
-    flex-wrap: wrap; /* Allow buttons to wrap if necessary */
+    flex-wrap: wrap;
+    position: relative; /* Change to relative positioning */
   }
   
+  /* Cart and customize buttons */
   .add-to-cart,
   .customize {
     background-color: transparent;
-   align-items: safe;
     border: 2px solid orange;
     color: orange;
     font-size: 16px;
@@ -222,3 +231,47 @@
     background-color: orange;
     color: white;
   }
+  
+  /* Adjust button position */
+  .add-to-cart {
+    margin-right: 5px;
+  }
+  
+  /* Adjust button position */
+  .customize {
+    margin-left: 5px;
+  }
+
+
+  /* colour selector */
+  /* Color Selector */
+/* Color Selector */
+.color-selector-container {
+    display: flex;
+    align-items: center;
+    margin: 20px;
+  }
+  
+  .color-label {
+    margin-right: 10px;
+  }
+  
+  .color-options {
+    display: flex;
+  }
+  
+  .color-option {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 10px;
+    cursor: pointer;
+  }
+  
+  /* Button hover effect */
+  .size-button:hover,
+  .color-option:hover {
+    background-color: orange;
+    transition: background-color 0.3s;
+  }
+  
