@@ -86,35 +86,45 @@ if(isset($_POST['add_to_cart'])) {
                 <button class="filter-button">Kids</button>
             </div>
 
-            <div class="insights">
-                <?php
-                $sql = "SELECT * FROM products";
-                $result = mysqli_query($conn, $sql);
+            <div class="prodarray">
+            
+    <?php
+    // Fetch products from the database
+    $sql = "SELECT * FROM products";
+    $result = mysqli_query($conn, $sql);
 
-                if (mysqli_num_rows($result) > 0) {
-                    while ($row = mysqli_fetch_assoc($result)) {
-                ?>
-                        <div>
-                            <form method="post" action="">
-                                <input type="hidden" name="product_id" value="<?php echo $row['pid']; ?>">
-                                <div class="sales">
-                                    <div class="product-box">
-                                        <img src="<?php echo $row['image_url']; ?>" alt="<?php echo $row['name']; ?>">
-                                        <p class="Name"><?php echo $row['name']; ?></p>
-                                        <p class="Description"><?php echo $row['description']; ?></p>
-                                        <p class="Price">Price: &#x20B9;<?php echo $row['price']; ?></p>
-                                        <button type="submit" class="Add" name="add_to_cart">Add To Cart</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                <?php
-                    }
-                } else {
-                    echo "No products found";
-                }
-                ?>
+    // Check if there are any products
+    if (mysqli_num_rows($result) > 0) {
+        // Loop through each product
+        while ($row = mysqli_fetch_assoc($result)) {
+            ?>
+            <div>
+            <a href="product_details.php?id=<?php echo $row['id']; ?>" class="product-link">
+    <div class="sales">
+        <!-- Product details -->
+        <div class="product-box">
+            <img src="<?php echo $row['image_url']; ?>" alt="<?php echo $row['name']; ?>">
+            <p class="Name"><?php echo $row['name']; ?></p>
+            <p class="Description"><?php echo $row['description']; ?></p>
+            <p class="Price">Price: &#x20B9;<?php echo $row['price']; ?></p>
+            <!-- Add more product details here as needed -->
+            <div class="a2c"><button>Add To Cart</button></div>
+            <div class="a2c"><button>Customize</button></div>
+        </div>
+    </div>
+</a>
+    </div>
+            <?php
+        }
+    } else {
+        // If no products found
+        echo "No products found";
+    }
+    ?>
+</div>
             </div>
+            <!-- End insights -->
+            
         </main>
     </div>
 </body>
